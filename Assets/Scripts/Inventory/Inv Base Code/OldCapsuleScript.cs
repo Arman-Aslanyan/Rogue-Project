@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CapsuleScript : MonoBehaviour
+public class OldCapsuleScript : MonoBehaviour
 {
     public GameObject itemPrefab;
 
     private void OnMouseUp()
     {
-        UIManager Inv = FindObjectOfType<UIManager>();
+        OldUIManager Inv = FindObjectOfType<OldUIManager>();
         SpriteRenderer spr = itemPrefab.GetComponent<SpriteRenderer>();
         int index = Inv.GetOpenSlot(Inv.CanStoreItem());
         if (index != -1)

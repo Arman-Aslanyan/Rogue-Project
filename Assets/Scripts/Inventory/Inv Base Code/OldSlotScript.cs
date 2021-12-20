@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SlotScript : MonoBehaviour
+public class OldSlotScript : MonoBehaviour
 {
     private Image thisImg;
     public GameObject textBox;
@@ -86,7 +86,7 @@ public class SlotScript : MonoBehaviour
         {
             //print(prefab.name);
             assign = false;
-            ItemData item = prefab.GetComponent<ItemData>();
+            OldItemData item = prefab.GetComponent<OldItemData>();
             itemName = item.itemName;
             nameColor = item.nameColor;
             itemDesc = item.itemDesc;

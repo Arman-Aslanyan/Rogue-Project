@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class OldUIManager : MonoBehaviour
 {
     private Canvas canvas;
     public List<Image> InvSlots = new List<Image>();
@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
 
     public void GiveSlotItemPrefab(int index, GameObject toAssign)
     {
-        InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab = toAssign;
+        InvSlots[index].transform.parent.GetComponent<OldSlotScript>().prefab = toAssign;
         //print("prefab assigned");
     }
 
@@ -83,15 +83,15 @@ public class UIManager : MonoBehaviour
                                                                //Add element to sub-list --> multiDim[index].Add(/*string here*/);
                                                               //Access sub-list element --> multiDim[index][index2]
         //Get all Slots and each Item within
-        List<SlotScript> slots = new List<SlotScript>();
+        List<OldSlotScript> slots = new List<OldSlotScript>();
         List<string> itemNames = new List<string>();
         for (int i = 0; i < InvSlots.Count - 1; i++)
         {
             if (InvSlots[i].sprite != null)
-                slots.Add(InvSlots[i].GetComponentInParent<SlotScript>());
+                slots.Add(InvSlots[i].GetComponentInParent<OldSlotScript>());
             //print(slots[i].transform.name);
         }
-        foreach (SlotScript instance in slots)
+        foreach (OldSlotScript instance in slots)
         {
             //items[i] = InvSlots[i];
             itemNames.Add(instance.itemName);
@@ -168,10 +168,10 @@ public class UIManager : MonoBehaviour
             UnSortInventory(slots);
     }
 
-    public void UnSortInventory(List<SlotScript> slots)
+    public void UnSortInventory(List<OldSlotScript> slots)
     {
         print("runs");
-        foreach (SlotScript slot in slots)
+        foreach (OldSlotScript slot in slots)
         {
             print("Changed");
             slot.transform.SetSiblingIndex(slot.OrigSibIndex);
