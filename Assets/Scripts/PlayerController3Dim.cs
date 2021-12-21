@@ -7,18 +7,22 @@ public class PlayerController3Dim : MonoBehaviour
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
+    public Animator animator;
 
     Vector2 movement;
 
     // Update called once per frame
     void Update()
     {
-       movement.x = Input.GetAxisRaw("Horizontal");
-       movement.y = Input.GetAxisRaw("Vertical");
-    }
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
-    void FixedUpdate()
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+    }
+    private void FixedUpdate()
     {
-        rb.MovePosition(rb.position * movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
