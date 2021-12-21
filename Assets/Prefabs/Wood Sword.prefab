@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118445031603280393}
   - component: {fileID: 8985001012822125816}
-  - component: {fileID: 5151360463438059020}
+  - component: {fileID: 259719051739589001}
   m_Layer: 0
   m_Name: Wood Sword
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5151360463438059020
+--- !u!114 &259719051739589001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8877681820959639089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99a7ed1fe3840c40ae5162af395d8c2, type: 3}
+  m_Script: {fileID: 11500000, guid: bcef00f4ecf82c646a19426ec4e1f8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Wood Sword
   nameColor: {r: 1, g: 1, b: 1, a: 1}
-  itemDesc: Just a bunch of sticks really....
-  descColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  itemDesc: ooga booga
+  descColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}

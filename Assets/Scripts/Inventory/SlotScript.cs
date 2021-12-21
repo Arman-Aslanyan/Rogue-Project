@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OldSlotScript : MonoBehaviour
+public class SlotScript : MonoBehaviour
 {
     private Image thisImg;
     public GameObject textBox;
@@ -12,10 +12,8 @@ public class OldSlotScript : MonoBehaviour
     public Color nameColor;
     public string itemDesc;
     public Color descColor;
-    public int OrigSibIndex;
-    public int sibIndex;
     private Vector2 mousePos;
-    public Canvas parentCanvas;
+    private Canvas parentCanvas;
     public GameObject prefab;
     private bool assign = true;
 
@@ -33,11 +31,22 @@ public class OldSlotScript : MonoBehaviour
         parentCanvas = GetComponentInParent<Canvas>();
     }
 
-    //Essentially deletes item from existence and opens of the slot once again
     private void OnMouseUp()
     {
         if (thisImg.sprite != null)
+        {
             thisImg.sprite = null;
+            thisImg.color = new Color(255, 255, 255, 0);
+            //Reset slot variables
+            prefab = null;
+            assign = true;
+            itemName = null;
+            nameColor = new Color(255, 255, 255, 0);
+            itemDesc = null;
+            descColor = new Color(255, 255, 255, 0);
+            //Afterwards, reset item text as well
+            OnMouseExit();
+        }
     }
 
     private void OnMouseEnter()
@@ -49,7 +58,7 @@ public class OldSlotScript : MonoBehaviour
     private void OnMouseOver()
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            parentCanvas.transform as RectTransform, Input.mousePosition, 
+            parentCanvas.transform as RectTransform, Input.mousePosition,
             parentCanvas.worldCamera,
             out mousePos);
         textBox.transform.position = parentCanvas.transform.TransformPoint(mousePos);
@@ -64,12 +73,7 @@ public class OldSlotScript : MonoBehaviour
     public void TextChange(bool enabled)
     {
         if (enabled)
-        {
-            /*GUIStyle style = new GUIStyle();
-            style.richText = true;
-            text.text = ("<color=nameColor>itemName</color> \n<color=descColor>itemDesc</color>");*/
-            text.text = itemName + " \n" + itemDesc;
-        }
+            text.text = itemName + "\n" + itemDesc;
         else
             text.text = " ";
     }
@@ -80,13 +84,13 @@ public class OldSlotScript : MonoBehaviour
         return text.enabled;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
         if (prefab != null && assign)
         {
-            //print(prefab.name);
             assign = false;
-            OldItemData item = prefab.GetComponent<OldItemData>();
+            ItemData item = prefab.GetComponent<ItemData>();
             itemName = item.itemName;
             nameColor = item.nameColor;
             itemDesc = item.itemDesc;
