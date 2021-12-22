@@ -5,24 +5,38 @@ using UnityEngine.UI;
 
 public class InvManager : MonoBehaviour
 {
-    private Canvas canvas;
+    public Canvas canvas;
     public List<Image> InvSlots = new List<Image>();
-    public Text itemDescText;
+    public Image invItemImg;
+    public Text invItemDesc;
+    public Text invItemName;
 
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GetComponent<Canvas>();
+        canvas = transform.GetChild(0).GetComponent<Canvas>();
         canvas.enabled = false;
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("InvSlot"))
             InvSlots.Add(obj.GetComponent<Image>());
         print(InvSlots.Count);
-        itemDescText.enabled = false;
+        invItemImg = canvas.transform.GetChild(1).GetComponent<Image>();
+        invItemDesc = canvas.transform.GetChild(2).GetComponent<Text>();
+        invItemName = canvas.transform.GetChild(3).GetComponent<Text>();
     }
 
     public void UIEnabledSwitch(bool isEnabled)
     {
         canvas.enabled = !isEnabled;
+        if (canvas.enabled == false)
+        {
+            InvManager Inv = GameObject.FindObjectOfType<InvManager>();
+            Inv.invItemImg.sprite = null;
+            Inv.invItemImg.color = new Color(255, 255, 255, 0);
+            Inv.invItemName.text = null;
+            Inv.invItemName.color = new Color(255, 255, 255, 0);
+            Inv.invItemDesc.text = null;
+            Inv.invItemDesc.color = new Color(255, 255, 255, 0);
+        }
     }
 
     public bool CanStoreItem()

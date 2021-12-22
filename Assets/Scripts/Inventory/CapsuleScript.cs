@@ -15,7 +15,6 @@ public class CapsuleScript : MonoBehaviour
         {
             Inv.ChangeSlotSprite(spr, index);
             Inv.GiveSlotItemPrefab(index, itemPrefab);
-            Inv.itemDescText.enabled = false;
         }
         else
             print("Inventory is Full!!");

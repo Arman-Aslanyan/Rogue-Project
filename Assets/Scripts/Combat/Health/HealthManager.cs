@@ -6,26 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
-    public string AtomicInteger = "1";
-    public int maxHp = 100;
-    public int curHp = 100;
     public Text startHpText;
 
     // Start is called before the first frame update
     void Start()
     {
-        startHpText.text = "Health: " + curHp.ToString() + "/ " + maxHp.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
-    public void ChangeHp()
+    public void ChangeHp(int change, DamageListener source)
     {
+        //Note: if change < 0 then that means curHp should increase
 
+        if (source.curHp > 0)
+        {
+            source.curHp -= change;
+        }
+        
+      /* Old code
         if (curHp > 0)
         {
             startHpText.text = "Health: " + curHp.ToString() + "/ " + maxHp.ToString();
@@ -34,6 +32,6 @@ public class HealthManager : MonoBehaviour
         {
             //send to game over scene
             SceneManager.LoadScene("Game Over");
-        }
+        }*/
     }
 }
