@@ -5,10 +5,8 @@ using UnityEngine;
 public class PlayerController3Dim : MonoBehaviour
 {
     public float moveSpeed = 5f;
-
     public Rigidbody2D rb;
     public Animator animator;
-
     Vector2 movement;
 
     // Update called once per frame

@@ -84,5 +84,43 @@ public class InvManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
             UIEnabledSwitch(canvas.enabled);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            ChangeHeldItem(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            ChangeHeldItem(1);
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            ChangeHeldItem(2);
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+            ChangeHeldItem(3);
+    }
+
+    private void ChangeHeldItem(int index)
+    {
+        if (!canvas.enabled)
+        {
+            CombatManager PlyrCom = FindObjectOfType<PlayerController3Dim>().GetComponent<CombatManager>();
+            if (InvSlots[index].sprite != null && PlyrCom.itemHeld.sprite == null && PlyrCom.heldIndex != index)
+            {
+                PlyrCom.heldIndex = index;
+                PlyrCom.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
+                PlyrCom.itemHeld.sprite = PlyrCom.obj.GetComponent<SpriteRenderer>().sprite;
+                PlyrCom.baseDmg = PlyrCom.obj.baseDmg;
+            }
+            else if (InvSlots[index].sprite != null && PlyrCom.heldIndex != index)
+            {
+                PlyrCom.heldIndex = index;
+                PlyrCom.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
+                PlyrCom.itemHeld.sprite = PlyrCom.obj.GetComponent<SpriteRenderer>().sprite;
+                PlyrCom.baseDmg = PlyrCom.obj.baseDmg;
+            }
+            else
+            {
+                PlyrCom.heldIndex = -1;
+                PlyrCom.obj = null;
+                PlyrCom.itemHeld.sprite = null;
+                PlyrCom.baseDmg = 0.1f;
+            }
+        }
     }
 }

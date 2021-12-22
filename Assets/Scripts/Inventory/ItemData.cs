@@ -8,4 +8,5 @@ public class ItemData : MonoBehaviour
     public Color nameColor;
     public string itemDesc;
     public Color descColor;
+    public float baseDmg = 0.1f;
 }

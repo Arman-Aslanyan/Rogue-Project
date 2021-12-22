@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -30,7 +31,10 @@ public class HealthManager : MonoBehaviour
         if (curHp <= 0)
         {
             if (isPlayer)
+            {
                 print("Fatality");
+                SceneManager.LoadScene("Menu Screen");
+            }
             else
                 print("Enemy defeated");
             Destroy(gameObject);

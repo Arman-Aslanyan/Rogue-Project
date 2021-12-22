@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1118445031603280393}
   - component: {fileID: 8985001012822125816}
-  - component: {fileID: 259719051739589001}
+  - component: {fileID: 5695000078206592213}
   m_Layer: 0
-  m_Name: Wood Sword
+  m_Name: Stone Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4337684191699249041, guid: afd2cf868b9d3f644a940d7c1054e076, type: 3}
+  m_Sprite: {fileID: -488721925442295091, guid: afd2cf868b9d3f644a940d7c1054e076, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &259719051739589001
+--- !u!114 &5695000078206592213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcef00f4ecf82c646a19426ec4e1f8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Wood Sword
+  itemName: Stone Sword
   nameColor: {r: 1, g: 1, b: 1, a: 1}
-  itemDesc: Ooga Booga
+  itemDesc: Made of kidney stones
   descColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  baseDmg: 3.2
