@@ -27,6 +27,7 @@ public class HealthManager : MonoBehaviour
             curHp -= change;
             if (isPlayer)
                 hpText.text = "Health: " + curHp.ToString("N1") + " / " + maxHp.ToString("N1");
+            print(curHp);
         }
         if (curHp <= 0)
         {

@@ -8,14 +8,20 @@ public class ToDamage : MonoBehaviour
 
     public float dmgToDeal;
     public string sourceName;
+    private bool ignore1stRun = true;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.gameObject.CompareTag("Object") && other.gameObject.name != sourceName)
+        if (!ignore1stRun)
         {
-            HealthManager hpMan = other.gameObject.GetComponent<HealthManager>();
-            hpMan.ChangeHp(dmgToDeal);
+            if (!other.gameObject.CompareTag("Object") && other.gameObject.name != sourceName)
+            {
+                HealthManager hpMan = other.gameObject.GetComponent<HealthManager>();
+                hpMan.ChangeHp(dmgToDeal);
+                Destroy(gameObject);
+            }
         }
-        Destroy(gameObject);
+        else
+            ignore1stRun = false;
     }
 }
