@@ -682,7 +682,6 @@ GameObject:
   - component: {fileID: 721524232}
   - component: {fileID: 721524229}
   - component: {fileID: 721524231}
-  - component: {fileID: 721524230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -717,7 +716,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.517609
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -733,19 +732,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &721524230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721524228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928728b8d9e9bad45957b6842654282a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1380236029}
 --- !u!81 &721524231
 AudioListener:
   m_ObjectHideFlags: 0
@@ -762,7 +748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721524228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -1.48, y: 2.58, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1647,7 +1633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1339472049}
   - component: {fileID: 1339472048}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SelectedItem - SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2140,7 +2126,7 @@ GameObject:
   - component: {fileID: 1380236024}
   - component: {fileID: 1380236023}
   - component: {fileID: 1380236022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2160,8 +2146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
+  EnemyWeaponSprite: {fileID: 0}
   itemHeld: {fileID: 1339472048}
+  attackSummonPos: {fileID: 0}
   heldIndex: -1
+  attackSpeed: 100
   damager: {fileID: 4010581491280693100, guid: 3d30bb7d474b8654897780ddb8bab616, type: 3}
   baseDmg: 0
   hpMan: {fileID: 0}
@@ -2301,7 +2290,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: ba05bcb22b0586c4693ecd6c5d368920, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2321,8 +2310,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380236021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.63, y: -5.99, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1339472049}
   m_Father: {fileID: 0}
