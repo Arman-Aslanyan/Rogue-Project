@@ -8,6 +8,8 @@ public class PlayerController3Dim : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
+    public bool spokeToKnight = false;
+    public bool canMove = true;
 
     // Update called once per frame
     void Update()
@@ -21,6 +23,7 @@ public class PlayerController3Dim : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (canMove)
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

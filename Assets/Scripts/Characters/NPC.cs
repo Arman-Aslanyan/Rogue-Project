@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class NPC : MonoBehaviour
 {
     public bool isPlayer;
     public bool isAlsoPlayer;
+    private bool testing = false;
+    private bool dumbBad = false;
+    private bool runOnce = true;
+    private bool testRun = true;
+    private Transform AAAAA;
     public string[] dialogue;
     public TMP_Text speechBox;
     public Image boxSprite;
@@ -24,21 +28,21 @@ public class NPC : MonoBehaviour
     void Start()
     {
         speechBox.text = "";
-        //Player speaks to self
-        if (isPlayer)
-        {
-            isPlayer = false;
-            OnMouseUp();
-            isPlayer = true;
-        }
     }
 
     public void OnMouseUp()
     {
+        if (gameObject.CompareTag("Sir Orange"))
+            FindObjectOfType<PlayerController3Dim>().spokeToKnight = true;
         speechBox.text = "";
-        StopCoroutine(IBetBlakeWillTestThis());
+        if (testing)
+        {
+            dumbBad = false;
+            StopCoroutine(IBetBlakeWillTestThis());
+        }
         if (!hasClicked && index < dialogue.Length && !isPlayer)
         {
+            print("runs");
             hasClicked = true;
             boxSprite.enabled = true;
             speechBox.enabled = true;
@@ -54,11 +58,6 @@ public class NPC : MonoBehaviour
             }
             index++;
             hasClicked = false;
-            if (isAlsoPlayer)
-            {
-                StopCoroutine(IBetBlakeWillTestThis());
-                OnMouseUp();
-            }
         }
         else
         {
@@ -77,12 +76,13 @@ public class NPC : MonoBehaviour
             isSpeaking = true;
             boxSprite.enabled = true;
             //Auto-Type
-            StartCoroutine(IBetBlakeWillTestThis());
             foreach (char character in str.ToCharArray())
             {
                 speechBox.text += character;
                 yield return new WaitForSeconds(typingSpeed);
             }
+            dumbBad = true;
+            StartCoroutine(IBetBlakeWillTestThis());
             isSpeaking = false;
             //For implementing NPC with player interactions
             //Then start here by checking an array that contains the indexes for each line that
@@ -92,13 +92,64 @@ public class NPC : MonoBehaviour
 
     public IEnumerator IBetBlakeWillTestThis()
     {
+        print("E");
+        testing = true;
         yield return new WaitForSeconds(disableTimer);
-        boxSprite.enabled = false;
-        speechBox.text = "";
-        speechBox.enabled = false;
-        hasClicked = false;
-        index = 0;
-        if (speechBox.fontStyle != FontStyles.Normal)
-            speechBox.fontStyle = FontStyles.Normal;
+        if (dumbBad)
+        {
+            if (isPlayer && AAAAA != null)
+                StartCoroutine(pain(AAAAA));
+            else
+            {
+                boxSprite.enabled = false;
+                speechBox.text = "";
+                speechBox.enabled = false;
+                hasClicked = false;
+                index = 0;
+                if (speechBox.fontStyle != FontStyles.Normal && !FindObjectOfType<PlayerController3Dim>().spokeToKnight)
+                    speechBox.fontStyle = FontStyles.Normal;
+            }
+        }
+        dumbBad = false;
+        print(testing);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("WHEEZE"))
+        {
+            if (isPlayer && !GetComponent<PlayerController3Dim>().spokeToKnight)
+            {
+                GetComponent<PlayerController3Dim>().canMove = false;
+                GameObject.FindGameObjectWithTag("Sir Orange");
+                isPlayer = false;
+                OnMouseUp();
+                isPlayer = true;
+                if (runOnce)
+                {
+                    print(testing);
+                    runOnce = false;
+                    if (testRun)
+                    {
+                        testRun = false;
+                        other.transform.position = new Vector3(other.transform.position.x, 5, 1);
+                    }
+                    dumbBad = false;
+                    AAAAA = other.transform;
+                }
+            }
+        }
+    }
+
+    public IEnumerator pain(Transform obj)
+    {
+        yield return new WaitForSeconds(0.5f);
+        obj.position = new Vector3(obj.transform.position.x, 7.5f, 1);
+        //dialogue[0].Insert(0, "/i ");
+        AAAAA = null;
+        yield return new WaitForSeconds(1);
+        runOnce = true;
+        testRun = true;
+        GetComponent<PlayerController3Dim>().canMove = true;
     }
 }
