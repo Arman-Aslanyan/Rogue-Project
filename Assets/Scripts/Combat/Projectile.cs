@@ -26,10 +26,18 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.name.Equals("Player") && collision.gameObject.name != source)
+        if (rb.velocity == Vector2.zero)
+        {
+            Destroy(gameObject);
+            CreateHitParticle();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name != source)
         {
             Debug.Log("Player had a nut thrown at them!");
             Destroy(gameObject);
@@ -37,12 +45,9 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.gameObject.name == source)
-        {
-            GetComponent<CircleCollider2D>().isTrigger = false;
-        }
+        GetComponent<CircleCollider2D>().isTrigger = false;
     }
 
     void CreateHitParticle()

@@ -19,11 +19,6 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckIfTimeToFire();
-    }
-
-    void CheckIfTimeToFire()
-    {
         if (Time.time > nextFire)
         {
             GameObject clone;

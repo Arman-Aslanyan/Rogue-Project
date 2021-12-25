@@ -42,7 +42,6 @@ public class NPC : MonoBehaviour
         }
         if (!hasClicked && index < dialogue.Length && !isPlayer)
         {
-            print("runs");
             hasClicked = true;
             boxSprite.enabled = true;
             speechBox.enabled = true;
@@ -92,7 +91,6 @@ public class NPC : MonoBehaviour
 
     public IEnumerator IBetBlakeWillTestThis()
     {
-        print("E");
         testing = true;
         yield return new WaitForSeconds(disableTimer);
         if (dumbBad)
@@ -111,7 +109,6 @@ public class NPC : MonoBehaviour
             }
         }
         dumbBad = false;
-        print(testing);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -127,7 +124,6 @@ public class NPC : MonoBehaviour
                 isPlayer = true;
                 if (runOnce)
                 {
-                    print(testing);
                     runOnce = false;
                     if (testRun)
                     {
