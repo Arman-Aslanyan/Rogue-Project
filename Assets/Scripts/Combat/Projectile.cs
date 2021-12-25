@@ -39,7 +39,8 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.name != source)
         {
-            Debug.Log("Player had a nut thrown at them!");
+            if (other.gameObject.CompareTag("Player"))
+                Debug.Log("Player had a nut thrown at them!");
             Destroy(gameObject);
             CreateHitParticle();
         }
