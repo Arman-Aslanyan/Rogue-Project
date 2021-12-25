@@ -33,19 +33,20 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log("Player had a nut thrown at them!");
             Destroy(gameObject);
-            StartCoroutine(TimedStop());
             CreateHitParticle();
         }
     }
-    
-    void CreateHitParticle()
+
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        hitParticle.Play();
+        if (collision.gameObject.name == source)
+        {
+            GetComponent<CircleCollider2D>().isTrigger = false;
+        }
     }
 
-    public IEnumerator TimedStop()
+    void CreateHitParticle()
     {
-        yield return new WaitForSeconds(2);
-        hitParticle.Stop();
+        ParticleSystem particle = Instantiate(hitParticle, transform.position, transform.rotation);
     }
 }
