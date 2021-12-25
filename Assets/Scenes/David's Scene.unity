@@ -646,6 +646,8 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1484372014}
   animator: {fileID: 1484372016}
+  spokeToKnight: 0
+  canMove: 1
 --- !u!95 &1484372016
 Animator:
   serializedVersion: 3
@@ -1069,6 +1071,7 @@ GameObject:
   - component: {fileID: 1984084145}
   - component: {fileID: 1984084146}
   - component: {fileID: 1984084140}
+  - component: {fileID: 1984084147}
   m_Layer: 0
   m_Name: Treant
   m_TagString: Untagged
@@ -1281,3 +1284,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.015209764, y: -0.2015276}
   m_Size: {x: 0.933664, y: 1.5562992}
   m_Direction: 0
+--- !u!114 &1984084147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984084138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014ba5fb3116fea4cb7af38497055892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1384375704869519188, guid: 0e9995b8aafbf72499b7579d8b456b4c, type: 3}
