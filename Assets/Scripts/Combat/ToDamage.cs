@@ -14,11 +14,10 @@ public class ToDamage : MonoBehaviour
     {
         if (!ignore1stRun)
         {
-            if (!other.gameObject.CompareTag("Object") && other.gameObject.name != sourceName)
+            if (other.gameObject.CompareTag("Player"))
             {
                 HealthManager hpMan = other.gameObject.GetComponent<HealthManager>();
                 hpMan.ChangeHp(dmgToDeal);
-                Destroy(gameObject);
             }
         }
         else
