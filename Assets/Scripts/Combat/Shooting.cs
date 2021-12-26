@@ -7,8 +7,10 @@ public class Shooting : MonoBehaviour
     [SerializeField]
     GameObject projectile;
 
+    public float baseDmg;
     public float fireRate;
     public float nextFire;
+    public float travelRate;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,10 @@ public class Shooting : MonoBehaviour
         {
             GameObject clone;
             clone = Instantiate(projectile, transform.position, Quaternion.identity);
-            clone.GetComponent<Projectile>().source = gameObject.name;
+            Projectile Proj = clone.GetComponent<Projectile>();
+            Proj.source = gameObject.name;
+            Proj.moveSpeed = travelRate;
+            Proj.dmgToDeal = baseDmg;
             nextFire = Time.time + fireRate;
         }
     }

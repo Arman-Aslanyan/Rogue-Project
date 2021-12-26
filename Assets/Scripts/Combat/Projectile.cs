@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
-    float moveSpeed = 7f;
-
+    public string source;
+    public float moveSpeed = 7f;
+    public float dmgToDeal;
     Rigidbody2D rb;
-
     PlayerController3Dim target;
     Vector2 moveDirection;
-
     public ParticleSystem hitParticle;
-
-    public string source;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +36,11 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.name != source)
         {
             if (other.gameObject.CompareTag("Player"))
+            {
                 Debug.Log("Player had a nut thrown at them!");
+                HealthManager hpMan = other.gameObject.GetComponent<HealthManager>();
+                hpMan.ChangeHp(dmgToDeal);
+            }
             Destroy(gameObject);
             CreateHitParticle();
         }
