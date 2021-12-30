@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Phase2 : MonoBehaviour
 {
+    public Animator animator;
     // Update is called once per frame
     void Update()
     {
         HealthManager hpMan = GetComponent<HealthManager>();
+
         if (hpMan.curHp <= 50)
         {
             //Treant go BBRRRRRR
@@ -16,6 +18,7 @@ public class Phase2 : MonoBehaviour
             shut.baseDmg = 10;
             shut.fireRate = 2;
             shut.travelRate = 14;
+            animator.SetBool("isTransforming", true);
         }
     }
 }
