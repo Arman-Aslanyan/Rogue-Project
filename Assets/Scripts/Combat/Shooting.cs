@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    [SerializeField]
-    GameObject projectile;
-
+    public GameObject projectile;
     public float baseDmg;
     public float fireRate;
     public float nextFire;
