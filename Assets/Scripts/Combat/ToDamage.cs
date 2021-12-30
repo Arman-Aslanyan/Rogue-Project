@@ -9,6 +9,9 @@ public class ToDamage : MonoBehaviour
     public float dmgToDeal;
     public string sourceName;
     private bool ignore1stRun = true;
+    private float curTime;
+    [Tooltip("Used for body damage over time")]
+    public float toDmgTime = 2.5f;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -22,5 +25,20 @@ public class ToDamage : MonoBehaviour
         }
         else
             ignore1stRun = false;
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            curTime += Time.deltaTime;
+            if (curTime >= toDmgTime)
+            {
+                HealthManager hpMan = other.gameObject.GetComponent<HealthManager>();
+                hpMan.ChangeHp(dmgToDeal);
+                curTime = 0;
+                print("Took Damage");
+            }
+        }
     }
 }

@@ -6,8 +6,9 @@ using TMPro;
 
 public class NPC : MonoBehaviour
 {
+    [Tooltip("Does the player have to click on this NPC to initiate conversation(s)?")]
+    public bool shouldClick = true;
     public bool isPlayer;
-    public bool isAlsoPlayer;
     private bool testing = false;
     private bool dumbBad = false;
     private bool runOnce = true;
@@ -20,6 +21,7 @@ public class NPC : MonoBehaviour
     //Auto-Type speed of NPC
     [Tooltip("Is measured in seconds")]
     public float typingSpeed = 0.02f;
+    public bool canClick = true;
     private bool hasClicked = false;
     private bool isSpeaking = false;
     public float disableTimer = 10;
@@ -32,39 +34,45 @@ public class NPC : MonoBehaviour
 
     public void OnMouseUp()
     {
-        if (gameObject.CompareTag("Sir Orange"))
-            FindObjectOfType<PlayerController3Dim>().spokeToKnight = true;
-        speechBox.text = "";
-        if (testing)
+        if (shouldClick && canClick)
         {
-            dumbBad = false;
-            StopCoroutine(IBetBlakeWillTestThis());
-        }
-        if (!hasClicked && index < dialogue.Length && !isPlayer)
-        {
-            hasClicked = true;
-            boxSprite.enabled = true;
-            speechBox.enabled = true;
-            print(dialogue[index]);
-            if (dialogue[0].Substring(0, 2) == "/i")
-            {
-                speechBox.fontStyle = FontStyles.Italic;
-                dialogue[0] = dialogue[0].Substring(2);
-            }
-            for (int i = 0; i < dialogue[index].Length; i++)
-            {
-                StartCoroutine(NPCDialogueTimer(dialogue[index]));
-            }
-            index++;
-            hasClicked = false;
-        }
-        else
-        {
-            boxSprite.enabled = false;
+            canClick = false;
+            if (gameObject.CompareTag("Sir Orange"))
+                FindObjectOfType<PlayerController3Dim>().spokeToKnight = true;
             speechBox.text = "";
-            speechBox.enabled = false;
-            hasClicked = true;
-            index = 0;
+            if (testing)
+            {
+                dumbBad = false;
+                StopCoroutine(IBetBlakeWillTestThis());
+            }
+            if (!hasClicked && index < dialogue.Length && !isPlayer)
+            {
+                hasClicked = true;
+                canClick = false;
+                boxSprite.enabled = true;
+                speechBox.enabled = true;
+                print(dialogue[index]);
+                if (dialogue[0].Substring(0, 2) == "/i")
+                {
+                    speechBox.fontStyle = FontStyles.Italic;
+                    dialogue[0] = dialogue[0].Substring(2);
+                }
+                for (int i = 0; i < dialogue[index].Length; i++)
+                {
+                    StartCoroutine(NPCDialogueTimer(dialogue[index]));
+                }
+                index++;
+                hasClicked = false;
+            }
+            else
+            {
+                boxSprite.enabled = false;
+                speechBox.text = "";
+                speechBox.enabled = false;
+                hasClicked = true;
+                canClick = true;
+                index = 0;
+            }
         }
     }
 
@@ -83,6 +91,7 @@ public class NPC : MonoBehaviour
             dumbBad = true;
             StartCoroutine(IBetBlakeWillTestThis());
             isSpeaking = false;
+            canClick = true;
             //For implementing NPC with player interactions
             //Then start here by checking an array that contains the indexes for each line that
             //requires player input after that line is mentioned then do the rest afterward

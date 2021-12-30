@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class BeginTreantFight : MonoBehaviour
 {
-    public GameObject fakeTreant;
-    private GameObject realTreant;
+    private GameObject fakeTreant;
+    public GameObject realTreant;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        realTreant = gameObject;
+        fakeTreant = gameObject;
+        anim = GetComponent<Animator>();
+        anim.enabled = false;
         realTreant.SetActive(false);
     }
 
@@ -18,8 +21,22 @@ public class BeginTreantFight : MonoBehaviour
     {
         if (canStart)
         {
-            fakeTreant.SetActive(false);
-            realTreant.SetActive(true);
+            anim.enabled = true;
+            StartCoroutine(wait());
         }
+    }
+
+    public IEnumerator wait()
+    {
+        NPC npc = GetComponent<NPC>();
+        npc.shouldClick = true;
+        npc.OnMouseUp();
+        npc.shouldClick = false;
+        yield return new WaitForSeconds(6);
+        npc.boxSprite.enabled = false;
+        npc.speechBox.text = "";
+        npc.speechBox.enabled = false;
+        fakeTreant.SetActive(false);
+        realTreant.SetActive(true);
     }
 }
