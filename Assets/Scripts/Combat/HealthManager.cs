@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
     public float maxHp = 100;
     public float curHp = 100;
     public bool isPlayer = false;
+    public bool gotHit = false;
     public Text hpText;
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class HealthManager : MonoBehaviour
         if (curHp > 0)
         {
             curHp -= change;
+            gotHit = true;
             if (isPlayer)
                 hpText.text = "Health: " + curHp.ToString("N1") + " / " + maxHp.ToString("N1");
             print(curHp);
