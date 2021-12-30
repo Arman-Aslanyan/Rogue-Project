@@ -11,6 +11,7 @@ public class PlayerController3Dim : MonoBehaviour
     public bool spokeToKnight = false;
     public bool canMove = true;
     public GameObject toCheckDist;
+    public GameObject KeyToPress;
 
     // Update called once per frame
     void Update()
@@ -30,5 +31,17 @@ public class PlayerController3Dim : MonoBehaviour
     {
         if (canMove)
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    public void EnableKeyPress()
+    {
+        GameObject clone;
+        Transform treant = FindObjectOfType<BeginTreantFight>().transform;
+        clone = Instantiate(KeyToPress, treant.position + new Vector3(-1, 0, 0), Quaternion.identity);
+    }
+
+    public void DisableKeyPress()
+    {
+        Destroy(GameObject.Find("Tutorial Key_Press(Clone)"));
     }
 }

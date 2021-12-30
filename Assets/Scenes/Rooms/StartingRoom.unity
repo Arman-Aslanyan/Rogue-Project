@@ -29900,6 +29900,7 @@ MonoBehaviour:
   spokeToKnight: 0
   canMove: 1
   toCheckDist: {fileID: 228678334}
+  KeyToPress: {fileID: 4185746487362590833, guid: 349be7c17a8d45844928175464c75b49, type: 3}
 --- !u!212 &1878456823
 SpriteRenderer:
   m_ObjectHideFlags: 0

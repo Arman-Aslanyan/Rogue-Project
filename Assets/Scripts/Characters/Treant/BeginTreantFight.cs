@@ -21,6 +21,7 @@ public class BeginTreantFight : MonoBehaviour
     {
         if (canStart)
         {
+            FindObjectOfType<PlayerController3Dim>().DisableKeyPress();
             anim.enabled = true;
             StartCoroutine(wait());
         }
