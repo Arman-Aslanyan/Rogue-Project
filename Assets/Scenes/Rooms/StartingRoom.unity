@@ -432,6 +432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 111588830}
+  rb: {fileID: 111588825}
+  acornBig: {fileID: 1384375704869519188, guid: d9a510a003851dd42a4647278d42b5f0, type: 3}
 --- !u!114 &111588836
 MonoBehaviour:
   m_ObjectHideFlags: 0
