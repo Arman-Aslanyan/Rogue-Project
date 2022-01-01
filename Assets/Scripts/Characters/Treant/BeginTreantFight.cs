@@ -34,21 +34,23 @@ public class BeginTreantFight : MonoBehaviour
     {
         NPC npc = GetComponent<NPC>();
         npc.shouldClick = true;
-        npc.OnMouseUp();
+        npc.speechBox.enabled = true;
+        StartCoroutine(npcSpeak(npc.dialogue[0], npc));
         npc.shouldClick = false;
-        yield return new WaitForSeconds(6);
-        npc.boxSprite.enabled = false;
-        npc.speechBox.text = "";
-        npc.speechBox.enabled = false;
+        yield return new WaitForSeconds(3);
         Transform orange = GameObject.FindGameObjectWithTag("Sir Orange").transform;
         orngAnim.enabled = true;
         yield return new WaitForSeconds(3);
         orngAnim.enabled = false;
-        npc.dialogue[1] = "OH HO HO! Well thats your problem seeya he he he HA!!!!";
-        StartCoroutine(npcSpeak(npc.dialogue[1], npc));
+        npc.speechBox.text = "";
+        //David... it's not what it looks like. Trust me.. nothing janky going on here
+        StartCoroutine(npcSpeak(transform.GetChild(0).GetComponent<NPC>().dialogue[0], transform.GetChild(0).GetComponent<NPC>()));
         yield return new WaitForSeconds(5);
+        npc.boxSprite.enabled = false;
+        npc.speechBox.text = "";
+        npc.speechBox.enabled = false;
         orange.position = new Vector3(-1.5f, 5.3f, 0);
-        Destroy(orange);
+        Destroy(orange.gameObject);
         fakeTreant.SetActive(false);
         realTreant.SetActive(true);
     }
@@ -62,14 +64,5 @@ public class BeginTreantFight : MonoBehaviour
             npc.speechBox.text += character;
             yield return new WaitForSeconds(npc.typingSpeed);
         }
-        StartCoroutine(IBetBlakeWillTestThis(npc));
-    }
-
-    public IEnumerator IBetBlakeWillTestThis(NPC npc)
-    {
-        yield return new WaitForSeconds(1);
-        npc.boxSprite.enabled = false;
-        npc.speechBox.text = "";
-        npc.speechBox.enabled = false;
     }
 }

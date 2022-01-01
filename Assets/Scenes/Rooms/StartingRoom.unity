@@ -550,6 +550,7 @@ MonoBehaviour:
   - The Demons treasure lies within a wall
   speechBox: {fileID: 355693604}
   boxSprite: {fileID: 357921411}
+  index: 0
   typingSpeed: 0.02
   canClick: 1
   disableTimer: 10
@@ -868,7 +869,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.97, y: -2.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1959086916}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -916,16 +918,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57de4a30a47b56b46b5d9c47702fc79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldClick: 1
+  shouldClick: 0
   isPlayer: 0
   dialogue:
   - ...
   - OH HO HO! Well thats your problem seeya he he he HA!!!!
   speechBox: {fileID: 355693604}
   boxSprite: {fileID: 357921411}
+  index: 0
   typingSpeed: 2
   canClick: 1
-  disableTimer: 0.5
+  disableTimer: 5
 --- !u!1001 &314437754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2566,6 +2569,7 @@ MonoBehaviour:
   - Well you see that tree over there? Why dont ye pluck off one of its branchs EH!?!?
   speechBox: {fileID: 355693604}
   boxSprite: {fileID: 357921411}
+  index: 0
   typingSpeed: 0.02
   canClick: 1
   disableTimer: 6
@@ -30026,6 +30030,7 @@ MonoBehaviour:
   - Why don't I talk to that Knight over there?
   speechBox: {fileID: 355693604}
   boxSprite: {fileID: 357921411}
+  index: 0
   typingSpeed: 0.02
   canClick: 1
   disableTimer: 2
@@ -30193,6 +30198,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938167215}
   m_CullTransparentMesh: 1
+--- !u!1 &1959086915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959086916}
+  - component: {fileID: 1959086917}
+  m_Layer: 0
+  m_Name: DavidYouDon'tSeeAnything
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1959086916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959086915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 228678338}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1959086917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959086915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57de4a30a47b56b46b5d9c47702fc79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldClick: 1
+  isPlayer: 0
+  dialogue:
+  - OH HO HO! Well thats your problem seeya he he he HA!!!!
+  speechBox: {fileID: 355693604}
+  boxSprite: {fileID: 357921411}
+  index: 0
+  typingSpeed: 0.02
+  canClick: 1
+  disableTimer: 15
 --- !u!1 &2014016509
 GameObject:
   m_ObjectHideFlags: 0

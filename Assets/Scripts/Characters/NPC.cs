@@ -17,7 +17,7 @@ public class NPC : MonoBehaviour
     public string[] dialogue;
     public TMP_Text speechBox;
     public Image boxSprite;
-    private int index = 0;
+    public int index = 0;
     //Auto-Type speed of NPC
     [Tooltip("Is measured in seconds")]
     public float typingSpeed = 0.02f;
@@ -52,6 +52,7 @@ public class NPC : MonoBehaviour
                 boxSprite.enabled = true;
                 speechBox.enabled = true;
                 print(dialogue[index]);
+                print(gameObject.name);
                 if (dialogue[0].Substring(0, 2) == "/i")
                 {
                     speechBox.fontStyle = FontStyles.Italic;
@@ -68,6 +69,7 @@ public class NPC : MonoBehaviour
             }
             else
             {
+                print("runs");
                 boxSprite.enabled = false;
                 speechBox.text = "";
                 speechBox.enabled = false;
@@ -110,6 +112,7 @@ public class NPC : MonoBehaviour
                 StartCoroutine(pain(AAAAA));
             else
             {
+                print(dialogue[0]);
                 boxSprite.enabled = false;
                 speechBox.text = "";
                 speechBox.enabled = false;
