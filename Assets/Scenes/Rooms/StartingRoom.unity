@@ -30248,7 +30248,7 @@ MonoBehaviour:
   speechBox: {fileID: 355693604}
   boxSprite: {fileID: 357921411}
   index: 0
-  typingSpeed: 0.02
+  typingSpeed: 0.05
   canClick: 1
   disableTimer: 15
 --- !u!1 &2014016509
