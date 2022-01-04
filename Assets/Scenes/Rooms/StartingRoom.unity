@@ -887,6 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   realTreant: {fileID: 111588822}
+  itemPrefab: {fileID: 8877681820959639089, guid: faf76bfa45ae1a3439eb671cc00151a9, type: 3}
 --- !u!95 &228678340
 Animator:
   serializedVersion: 3
@@ -29944,6 +29945,7 @@ MonoBehaviour:
   animator: {fileID: 1878456819}
   spokeToKnight: 0
   canMove: 1
+  hasToCheckANDPress: 0
   toCheckDist: {fileID: 228678334}
   KeyToPress: {fileID: 4185746487362590833, guid: 349be7c17a8d45844928175464c75b49, type: 3}
 --- !u!212 &1878456823

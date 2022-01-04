@@ -8,6 +8,7 @@ public class BeginTreantFight : MonoBehaviour
     public GameObject realTreant;
     private Animator anim;
     private Animator orngAnim;
+    public GameObject itemPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,17 @@ public class BeginTreantFight : MonoBehaviour
 
     public IEnumerator wait()
     {
+        InvManager Inv = FindObjectOfType<InvManager>();
+        SpriteRenderer spr = itemPrefab.GetComponent<SpriteRenderer>();
+        int index = Inv.GetOpenSlot(Inv.CanStoreItem());
+        if (index != -1)
+        {
+            Inv.ChangeSlotSprite(spr, index);
+            Inv.GiveSlotItemPrefab(index, itemPrefab);
+        }
+        else 
+            print("Inventory is Full!!");
+        yield return new WaitForSeconds(1);
         NPC npc = GetComponent<NPC>();
         npc.shouldClick = true;
         npc.speechBox.enabled = true;

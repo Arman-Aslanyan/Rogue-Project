@@ -1496,6 +1496,7 @@ MonoBehaviour:
   maxHp: 100
   curHp: 100
   isPlayer: 0
+  gotHit: 0
   hpText: {fileID: 1513934524}
 --- !u!50 &813318800
 Rigidbody2D:
@@ -3144,6 +3145,11 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 1861534813}
   animator: {fileID: 1861534815}
+  spokeToKnight: 0
+  canMove: 1
+  hasToCheckANDPress: 0
+  toCheckDist: {fileID: 0}
+  KeyToPress: {fileID: 0}
 --- !u!61 &1861534812
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3206,6 +3212,7 @@ MonoBehaviour:
   maxHp: 100
   curHp: 100
   isPlayer: 1
+  gotHit: 0
   hpText: {fileID: 1513934524}
 --- !u!95 &1861534815
 Animator:

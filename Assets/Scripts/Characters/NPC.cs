@@ -64,7 +64,7 @@ public class NPC : MonoBehaviour
                 }
                 index++;
                 hasClicked = false;
-                if (gameObject.CompareTag("Sir Orange") && index == dialogue.Length - 1)
+                if (gameObject.CompareTag("Sir Orange") && index == dialogue.Length)
                     FindObjectOfType<PlayerController3Dim>().EnableKeyPress();
             }
             else

@@ -99,27 +99,27 @@ public class InvManager : MonoBehaviour
     {
         if (!canvas.enabled)
         {
-            CombatManager PlyrCom = FindObjectOfType<PlayerController3Dim>().GetComponent<CombatManager>();
-            if (InvSlots[index].sprite != null && PlyrCom.itemHeld.sprite == null && PlyrCom.heldIndex != index)
+            CombatManager PlyrCon = FindObjectOfType<PlayerController3Dim>().GetComponent<CombatManager>();
+            if (InvSlots[index].sprite != null && PlyrCon.itemHeld.sprite == null && PlyrCon.heldIndex != index)
             {
-                PlyrCom.heldIndex = index;
-                PlyrCom.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
-                PlyrCom.itemHeld.sprite = PlyrCom.obj.GetComponent<SpriteRenderer>().sprite;
-                PlyrCom.baseDmg = PlyrCom.obj.baseDmg;
+                PlyrCon.heldIndex = index;
+                PlyrCon.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
+                PlyrCon.itemHeld.sprite = PlyrCon.obj.GetComponent<SpriteRenderer>().sprite;
+                PlyrCon.baseDmg = PlyrCon.obj.baseDmg;
             }
-            else if (InvSlots[index].sprite != null && PlyrCom.heldIndex != index)
+            else if (InvSlots[index].sprite != null && PlyrCon.heldIndex != index)
             {
-                PlyrCom.heldIndex = index;
-                PlyrCom.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
-                PlyrCom.itemHeld.sprite = PlyrCom.obj.GetComponent<SpriteRenderer>().sprite;
-                PlyrCom.baseDmg = PlyrCom.obj.baseDmg;
+                PlyrCon.heldIndex = index;
+                PlyrCon.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
+                PlyrCon.itemHeld.sprite = PlyrCon.obj.GetComponent<SpriteRenderer>().sprite;
+                PlyrCon.baseDmg = PlyrCon.obj.baseDmg;
             }
             else
             {
-                PlyrCom.heldIndex = -1;
-                PlyrCom.obj = null;
-                PlyrCom.itemHeld.sprite = null;
-                PlyrCom.baseDmg = 0.1f;
+                PlyrCon.heldIndex = -1;
+                PlyrCon.obj = null;
+                PlyrCon.itemHeld.sprite = null;
+                PlyrCon.baseDmg = 0.1f;
             }
         }
     }
