@@ -9,10 +9,12 @@ public class BeginTreantFight : MonoBehaviour
     private Animator anim;
     private Animator orngAnim;
     public GameObject itemPrefab;
+    private Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         fakeTreant = gameObject;
         anim = GetComponent<Animator>();
         anim.enabled = false;
@@ -21,28 +23,27 @@ public class BeginTreantFight : MonoBehaviour
         orngAnim.enabled = false;
     }
 
-    public void BeginTheChaos(bool canStart)
+    private void Update()
     {
-        if (canStart)
-        {
-            FindObjectOfType<PlayerController3Dim>().DisableKeyPress();
-            anim.enabled = true;
-            StartCoroutine(wait());
-        }
+        /*float dist = Vector2.Distance(transform.position, player.transform.position);
+        if (Input.GetKeyDown(KeyCode.E) && dist <= 2.5f && FindObjectOfType<PlayerController3Dim>().spokeToKnight)
+            BeginTheChaos();*/
+    }
+
+    private void OnMouseUp()
+    {
+        BeginTheChaos();
+    }
+
+    public void BeginTheChaos()
+    {
+        FindObjectOfType<PlayerController3Dim>().DisableKeyPress();
+        anim.enabled = true;
+        StartCoroutine(wait());
     }
 
     public IEnumerator wait()
     {
-        InvManager Inv = FindObjectOfType<InvManager>();
-        SpriteRenderer spr = itemPrefab.GetComponent<SpriteRenderer>();
-        int index = Inv.GetOpenSlot(Inv.CanStoreItem());
-        if (index != -1)
-        {
-            Inv.ChangeSlotSprite(spr, index);
-            Inv.GiveSlotItemPrefab(index, itemPrefab);
-        }
-        else 
-            print("Inventory is Full!!");
         yield return new WaitForSeconds(1);
         NPC npc = GetComponent<NPC>();
         npc.shouldClick = true;

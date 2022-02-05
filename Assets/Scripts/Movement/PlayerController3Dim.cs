@@ -10,8 +10,6 @@ public class PlayerController3Dim : MonoBehaviour
     Vector2 movement;
     public bool spokeToKnight = false;
     public bool canMove = true;
-    public bool hasToCheckANDPress;
-    public GameObject toCheckDist;
     public GameObject KeyToPress;
 
     // Update called once per frame
@@ -23,13 +21,6 @@ public class PlayerController3Dim : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-
-        if (hasToCheckANDPress)
-        {
-            float dist = Vector2.Distance(transform.position, toCheckDist.transform.position);
-            if (Input.GetKeyDown(KeyCode.E) && dist <= 2.5f && spokeToKnight)
-                FindObjectOfType<BeginTreantFight>().BeginTheChaos(true);
-        }
     }
     private void FixedUpdate()
     {
