@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CombatManager : MonoBehaviour
+public class RangedCombatManager : MonoBehaviour
 {
     //Script to be attached to all entities and have current held weapon/item stored for later use
 

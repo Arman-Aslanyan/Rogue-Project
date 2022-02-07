@@ -99,27 +99,30 @@ public class InvManager : MonoBehaviour
     {
         if (!canvas.enabled)
         {
-            CombatManager PlyrCon = FindObjectOfType<PlayerController3Dim>().GetComponent<CombatManager>();
-            if (InvSlots[index].sprite != null && PlyrCon.itemHeld.sprite == null && PlyrCon.heldIndex != index)
+            if (FindObjectOfType<PlayerController3Dim>().TryGetComponent(out RangedCombatManager thinge))
             {
-                PlyrCon.heldIndex = index;
-                PlyrCon.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
-                PlyrCon.itemHeld.sprite = PlyrCon.obj.GetComponent<SpriteRenderer>().sprite;
-                PlyrCon.baseDmg = PlyrCon.obj.baseDmg;
-            }
-            else if (InvSlots[index].sprite != null && PlyrCon.heldIndex != index)
-            {
-                PlyrCon.heldIndex = index;
-                PlyrCon.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
-                PlyrCon.itemHeld.sprite = PlyrCon.obj.GetComponent<SpriteRenderer>().sprite;
-                PlyrCon.baseDmg = PlyrCon.obj.baseDmg;
-            }
-            else
-            {
-                PlyrCon.heldIndex = -1;
-                PlyrCon.obj = null;
-                PlyrCon.itemHeld.sprite = null;
-                PlyrCon.baseDmg = 0.1f;
+                RangedCombatManager PlyrCon = GameObject.FindGameObjectWithTag("Player").GetComponent<RangedCombatManager>();
+                if (InvSlots[index].sprite != null && PlyrCon.itemHeld.sprite == null && PlyrCon.heldIndex != index)
+                {
+                    PlyrCon.heldIndex = index;
+                    PlyrCon.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
+                    PlyrCon.itemHeld.sprite = PlyrCon.obj.GetComponent<SpriteRenderer>().sprite;
+                    PlyrCon.baseDmg = PlyrCon.obj.baseDmg;
+                }
+                else if (InvSlots[index].sprite != null && PlyrCon.heldIndex != index) 
+                {
+                    PlyrCon.heldIndex = index;
+                    PlyrCon.obj = InvSlots[index].transform.parent.GetComponent<SlotScript>().prefab.GetComponent<ItemData>();
+                    PlyrCon.itemHeld.sprite = PlyrCon.obj.GetComponent<SpriteRenderer>().sprite;
+                    PlyrCon.baseDmg = PlyrCon.obj.baseDmg;
+                }
+                else
+                {
+                    PlyrCon.heldIndex = -1;
+                    PlyrCon.obj = null;
+                    PlyrCon.itemHeld.sprite = null;
+                    PlyrCon.baseDmg = 0.1f;
+                }
             }
         }
     }
